@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DianziShangwuModelStoreContainer" CdmEntityContainer="DianziShangwuEntities">
+    <EntitySetMapping Name="Guest">
+      <EntityTypeMapping TypeName="DianziShangwuModel.Guest">
+        <MappingFragment StoreEntitySet="Guest">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ShuMing" ColumnName="ShuMing" />
+          <ScalarProperty Name="BiaoTi" ColumnName="BiaoTi" />
+          <ScalarProperty Name="ZhenWen" ColumnName="ZhenWen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="member">
+      <EntityTypeMapping TypeName="DianziShangwuModel.member">
+        <MappingFragment StoreEntitySet="member">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="truename" ColumnName="truename" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="cardno" ColumnName="cardno" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="postcode" ColumnName="postcode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="question" ColumnName="question" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="DianziShangwuModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_goods">
+      <EntityTypeMapping TypeName="DianziShangwuModel.tb_goods">
+        <MappingFragment StoreEntitySet="tb_goods">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="typeID" ColumnName="typeID" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="goodsName" ColumnName="goodsName" />
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="nowprice" ColumnName="nowprice" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="goodsType" ColumnName="goodsType" />
+          <ScalarProperty Name="newgoods" ColumnName="newgoods" />
+          <ScalarProperty Name="Image_content" ColumnName="Image_content" />
+          <ScalarProperty Name="INTime" ColumnName="INTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_manager">
+      <EntityTypeMapping TypeName="DianziShangwuModel.tb_manager">
+        <MappingFragment StoreEntitySet="tb_manager">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="manager" ColumnName="manager" />
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_order">
+      <EntityTypeMapping TypeName="DianziShangwuModel.tb_order">
+        <MappingFragment StoreEntitySet="tb_order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PorductId" ColumnName="PorductId" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Products" ColumnName="Products" />
+          <ScalarProperty Name="ProductTotal" ColumnName="ProductTotal" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="State" ColumnName="State" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_subType">
+      <EntityTypeMapping TypeName="DianziShangwuModel.tb_subType">
+        <MappingFragment StoreEntitySet="tb_subType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SuperID" ColumnName="SuperID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_superType">
+      <EntityTypeMapping TypeName="DianziShangwuModel.tb_superType">
+        <MappingFragment StoreEntitySet="tb_superType">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TempStore">
+      <EntityTypeMapping TypeName="DianziShangwuModel.TempStore">
+        <MappingFragment StoreEntitySet="TempStore">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+          <ScalarProperty Name="Products" ColumnName="Products" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Prices" ColumnName="Prices" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

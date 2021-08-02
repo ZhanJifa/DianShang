@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DianziShangwuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Guest">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShuMing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BiaoTi" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="ZhenWen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="member">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="truename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cardno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="question" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tb_goods">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="typeID" Type="Int32" />
+    <Property Name="type" Type="Int32" />
+    <Property Name="goodsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="introduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="price" Type="Double" />
+    <Property Name="nowprice" Type="Double" />
+    <Property Name="num" Type="Int64" />
+    <Property Name="goodsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="newgoods" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image_content" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="INTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_subType" Relationship="Self.FK__tb_goods__type__1A14E395" FromRole="tb_goods" ToRole="tb_subType" />
+    <NavigationProperty Name="tb_superType" Relationship="Self.FK__tb_goods__typeID__1920BF5C" FromRole="tb_goods" ToRole="tb_superType" />
+  </EntityType>
+  <EntityType Name="tb_manager">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tb_order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PorductId" Type="Int64" Nullable="false" />
+    <Property Name="price" Type="Double" />
+    <Property Name="Products" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProductTotal" Type="Double" />
+    <Property Name="num" Type="Int64" />
+    <Property Name="State" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_subType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SuperID" Type="Int32" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_goods" Relationship="Self.FK__tb_goods__type__1A14E395" FromRole="tb_subType" ToRole="tb_goods" />
+    <NavigationProperty Name="tb_superType" Relationship="Self.FK__tb_subTyp__Super__1273C1CD" FromRole="tb_subType" ToRole="tb_superType" />
+  </EntityType>
+  <EntityType Name="tb_superType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tb_goods" Relationship="Self.FK__tb_goods__typeID__1920BF5C" FromRole="tb_superType" ToRole="tb_goods" />
+    <NavigationProperty Name="tb_subType" Relationship="Self.FK__tb_subTyp__Super__1273C1CD" FromRole="tb_superType" ToRole="tb_subType" />
+  </EntityType>
+  <EntityType Name="TempStore">
+    <Key>
+      <PropertyRef Name="Qty" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GoodsID" Type="Int32" />
+    <Property Name="Products" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="Prices" Type="Double" />
+    <Property Name="Total" Type="Double" />
+  </EntityType>
+  <Association Name="FK__tb_goods__type__1A14E395">
+    <End Role="tb_subType" Type="Self.tb_subType" Multiplicity="0..1" />
+    <End Role="tb_goods" Type="Self.tb_goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_subType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="tb_goods">
+        <PropertyRef Name="type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_goods__typeID__1920BF5C">
+    <End Role="tb_superType" Type="Self.tb_superType" Multiplicity="0..1" />
+    <End Role="tb_goods" Type="Self.tb_goods" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_superType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tb_goods">
+        <PropertyRef Name="typeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_subTyp__Super__1273C1CD">
+    <End Role="tb_superType" Type="Self.tb_superType" Multiplicity="0..1" />
+    <End Role="tb_subType" Type="Self.tb_subType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_superType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="tb_subType">
+        <PropertyRef Name="SuperID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DianziShangwuEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Guest" EntityType="Self.Guest" />
+    <EntitySet Name="member" EntityType="Self.member" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="tb_goods" EntityType="Self.tb_goods" />
+    <EntitySet Name="tb_manager" EntityType="Self.tb_manager" />
+    <EntitySet Name="tb_order" EntityType="Self.tb_order" />
+    <EntitySet Name="tb_subType" EntityType="Self.tb_subType" />
+    <EntitySet Name="tb_superType" EntityType="Self.tb_superType" />
+    <EntitySet Name="TempStore" EntityType="Self.TempStore" />
+    <AssociationSet Name="FK__tb_goods__type__1A14E395" Association="Self.FK__tb_goods__type__1A14E395">
+      <End Role="tb_subType" EntitySet="tb_subType" />
+      <End Role="tb_goods" EntitySet="tb_goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_goods__typeID__1920BF5C" Association="Self.FK__tb_goods__typeID__1920BF5C">
+      <End Role="tb_superType" EntitySet="tb_superType" />
+      <End Role="tb_goods" EntitySet="tb_goods" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_subTyp__Super__1273C1CD" Association="Self.FK__tb_subTyp__Super__1273C1CD">
+      <End Role="tb_superType" EntitySet="tb_superType" />
+      <End Role="tb_subType" EntitySet="tb_subType" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
