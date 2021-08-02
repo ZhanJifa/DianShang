@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DianziShangwuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShuMing" Type="nvarchar" MaxLength="50" />
+          <Property Name="BiaoTi" Type="nvarchar" MaxLength="8" />
+          <Property Name="ZhenWen" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="truename" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="cardno" Type="nvarchar" MaxLength="50" />
+          <Property Name="address" Type="nvarchar" MaxLength="50" />
+          <Property Name="postcode" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="nvarchar" MaxLength="50" />
+          <Property Name="question" Type="nvarchar" MaxLength="50" />
+          <Property Name="answer" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_goods">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeID" Type="int" />
+          <Property Name="type" Type="int" />
+          <Property Name="goodsName" Type="nvarchar" MaxLength="50" />
+          <Property Name="introduce" Type="text" />
+          <Property Name="price" Type="float" />
+          <Property Name="nowprice" Type="float" />
+          <Property Name="num" Type="bigint" />
+          <Property Name="goodsType" Type="nvarchar" MaxLength="50" />
+          <Property Name="newgoods" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image_content" Type="image" />
+          <Property Name="INTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_manager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="manager" Type="nvarchar" MaxLength="50" />
+          <Property Name="PWD" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PorductId" Type="bigint" Nullable="false" />
+          <Property Name="price" Type="float" />
+          <Property Name="Products" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProductTotal" Type="float" />
+          <Property Name="num" Type="bigint" />
+          <Property Name="State" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_subType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SuperID" Type="int" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tb_superType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“DianziShangwu.dbo.TempStore”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="TempStore">
+          <Key>
+            <PropertyRef Name="Qty" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GoodsID" Type="int" />
+          <Property Name="Products" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qty" Type="int" Nullable="false" />
+          <Property Name="Prices" Type="float" />
+          <Property Name="Total" Type="float" />
+        </EntityType>
+        <Association Name="FK__tb_goods__type__1A14E395">
+          <End Role="tb_subType" Type="Self.tb_subType" Multiplicity="0..1" />
+          <End Role="tb_goods" Type="Self.tb_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_subType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tb_goods">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_goods__typeID__1920BF5C">
+          <End Role="tb_superType" Type="Self.tb_superType" Multiplicity="0..1" />
+          <End Role="tb_goods" Type="Self.tb_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_superType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_goods">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_subTyp__Super__1273C1CD">
+          <End Role="tb_superType" Type="Self.tb_superType" Multiplicity="0..1" />
+          <End Role="tb_subType" Type="Self.tb_subType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_superType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_subType">
+              <PropertyRef Name="SuperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DianziShangwuModelStoreContainer">
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_goods" EntityType="Self.tb_goods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_manager" EntityType="Self.tb_manager" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_order" EntityType="Self.tb_order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_subType" EntityType="Self.tb_subType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_superType" EntityType="Self.tb_superType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TempStore" EntityType="Self.TempStore" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TempStore].[UserName] AS [UserName], 
+    [TempStore].[GoodsID] AS [GoodsID], 
+    [TempStore].[Products] AS [Products], 
+    [TempStore].[Qty] AS [Qty], 
+    [TempStore].[Prices] AS [Prices], 
+    [TempStore].[Total] AS [Total]
+    FROM [dbo].[TempStore] AS [TempStore]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__tb_goods__type__1A14E395" Association="Self.FK__tb_goods__type__1A14E395">
+            <End Role="tb_subType" EntitySet="tb_subType" />
+            <End Role="tb_goods" EntitySet="tb_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_goods__typeID__1920BF5C" Association="Self.FK__tb_goods__typeID__1920BF5C">
+            <End Role="tb_superType" EntitySet="tb_superType" />
+            <End Role="tb_goods" EntitySet="tb_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_subTyp__Super__1273C1CD" Association="Self.FK__tb_subTyp__Super__1273C1CD">
+            <End Role="tb_superType" EntitySet="tb_superType" />
+            <End Role="tb_subType" EntitySet="tb_subType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DianziShangwuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShuMing" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BiaoTi" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="ZhenWen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="truename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cardno" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="postcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="question" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="answer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tb_goods">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeID" Type="Int32" />
+          <Property Name="type" Type="Int32" />
+          <Property Name="goodsName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="introduce" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Double" />
+          <Property Name="nowprice" Type="Double" />
+          <Property Name="num" Type="Int64" />
+          <Property Name="goodsType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="newgoods" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image_content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="INTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_subType" Relationship="Self.FK__tb_goods__type__1A14E395" FromRole="tb_goods" ToRole="tb_subType" />
+          <NavigationProperty Name="tb_superType" Relationship="Self.FK__tb_goods__typeID__1920BF5C" FromRole="tb_goods" ToRole="tb_superType" />
+        </EntityType>
+        <EntityType Name="tb_manager">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PorductId" Type="Int64" Nullable="false" />
+          <Property Name="price" Type="Double" />
+          <Property Name="Products" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProductTotal" Type="Double" />
+          <Property Name="num" Type="Int64" />
+          <Property Name="State" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tb_subType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SuperID" Type="Int32" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_goods" Relationship="Self.FK__tb_goods__type__1A14E395" FromRole="tb_subType" ToRole="tb_goods" />
+          <NavigationProperty Name="tb_superType" Relationship="Self.FK__tb_subTyp__Super__1273C1CD" FromRole="tb_subType" ToRole="tb_superType" />
+        </EntityType>
+        <EntityType Name="tb_superType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_goods" Relationship="Self.FK__tb_goods__typeID__1920BF5C" FromRole="tb_superType" ToRole="tb_goods" />
+          <NavigationProperty Name="tb_subType" Relationship="Self.FK__tb_subTyp__Super__1273C1CD" FromRole="tb_superType" ToRole="tb_subType" />
+        </EntityType>
+        <EntityType Name="TempStore">
+          <Key>
+            <PropertyRef Name="Qty" />
+          </Key>
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GoodsID" Type="Int32" />
+          <Property Name="Products" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qty" Type="Int32" Nullable="false" />
+          <Property Name="Prices" Type="Double" />
+          <Property Name="Total" Type="Double" />
+        </EntityType>
+        <Association Name="FK__tb_goods__type__1A14E395">
+          <End Role="tb_subType" Type="Self.tb_subType" Multiplicity="0..1" />
+          <End Role="tb_goods" Type="Self.tb_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_subType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tb_goods">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_goods__typeID__1920BF5C">
+          <End Role="tb_superType" Type="Self.tb_superType" Multiplicity="0..1" />
+          <End Role="tb_goods" Type="Self.tb_goods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_superType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_goods">
+              <PropertyRef Name="typeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__tb_subTyp__Super__1273C1CD">
+          <End Role="tb_superType" Type="Self.tb_superType" Multiplicity="0..1" />
+          <End Role="tb_subType" Type="Self.tb_subType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_superType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tb_subType">
+              <PropertyRef Name="SuperID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DianziShangwuEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Guest" EntityType="Self.Guest" />
+          <EntitySet Name="member" EntityType="Self.member" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" />
+          <EntitySet Name="tb_goods" EntityType="Self.tb_goods" />
+          <EntitySet Name="tb_manager" EntityType="Self.tb_manager" />
+          <EntitySet Name="tb_order" EntityType="Self.tb_order" />
+          <EntitySet Name="tb_subType" EntityType="Self.tb_subType" />
+          <EntitySet Name="tb_superType" EntityType="Self.tb_superType" />
+          <EntitySet Name="TempStore" EntityType="Self.TempStore" />
+          <AssociationSet Name="FK__tb_goods__type__1A14E395" Association="Self.FK__tb_goods__type__1A14E395">
+            <End Role="tb_subType" EntitySet="tb_subType" />
+            <End Role="tb_goods" EntitySet="tb_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_goods__typeID__1920BF5C" Association="Self.FK__tb_goods__typeID__1920BF5C">
+            <End Role="tb_superType" EntitySet="tb_superType" />
+            <End Role="tb_goods" EntitySet="tb_goods" />
+          </AssociationSet>
+          <AssociationSet Name="FK__tb_subTyp__Super__1273C1CD" Association="Self.FK__tb_subTyp__Super__1273C1CD">
+            <End Role="tb_superType" EntitySet="tb_superType" />
+            <End Role="tb_subType" EntitySet="tb_subType" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DianziShangwuModelStoreContainer" CdmEntityContainer="DianziShangwuEntities">
+          <EntitySetMapping Name="Guest">
+            <EntityTypeMapping TypeName="DianziShangwuModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ShuMing" ColumnName="ShuMing" />
+                <ScalarProperty Name="BiaoTi" ColumnName="BiaoTi" />
+                <ScalarProperty Name="ZhenWen" ColumnName="ZhenWen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member">
+            <EntityTypeMapping TypeName="DianziShangwuModel.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="truename" ColumnName="truename" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="cardno" ColumnName="cardno" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postcode" ColumnName="postcode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="question" ColumnName="question" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="DianziShangwuModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="OrderTime" ColumnName="OrderTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_goods">
+            <EntityTypeMapping TypeName="DianziShangwuModel.tb_goods">
+              <MappingFragment StoreEntitySet="tb_goods">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="typeID" ColumnName="typeID" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="goodsName" ColumnName="goodsName" />
+                <ScalarProperty Name="introduce" ColumnName="introduce" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="nowprice" ColumnName="nowprice" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="goodsType" ColumnName="goodsType" />
+                <ScalarProperty Name="newgoods" ColumnName="newgoods" />
+                <ScalarProperty Name="Image_content" ColumnName="Image_content" />
+                <ScalarProperty Name="INTime" ColumnName="INTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_manager">
+            <EntityTypeMapping TypeName="DianziShangwuModel.tb_manager">
+              <MappingFragment StoreEntitySet="tb_manager">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="manager" ColumnName="manager" />
+                <ScalarProperty Name="PWD" ColumnName="PWD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_order">
+            <EntityTypeMapping TypeName="DianziShangwuModel.tb_order">
+              <MappingFragment StoreEntitySet="tb_order">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PorductId" ColumnName="PorductId" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Products" ColumnName="Products" />
+                <ScalarProperty Name="ProductTotal" ColumnName="ProductTotal" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="State" ColumnName="State" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_subType">
+            <EntityTypeMapping TypeName="DianziShangwuModel.tb_subType">
+              <MappingFragment StoreEntitySet="tb_subType">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SuperID" ColumnName="SuperID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_superType">
+            <EntityTypeMapping TypeName="DianziShangwuModel.tb_superType">
+              <MappingFragment StoreEntitySet="tb_superType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TempStore">
+            <EntityTypeMapping TypeName="DianziShangwuModel.TempStore">
+              <MappingFragment StoreEntitySet="TempStore">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="GoodsID" ColumnName="GoodsID" />
+                <ScalarProperty Name="Products" ColumnName="Products" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Prices" ColumnName="Prices" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
