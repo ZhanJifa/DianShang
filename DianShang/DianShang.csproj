@@ -96,6 +96,111 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\ad-banner\01.jpg" />
+    <Content Include="assets\images\ad-banner\02.jpg" />
+    <Content Include="assets\images\ad-banner\04.jpg" />
+    <Content Include="assets\images\banner\01.jpg" />
+    <Content Include="assets\images\banner\02.jpg" />
+    <Content Include="assets\images\banner\03.jpg" />
+    <Content Include="assets\images\banner\04.jpg" />
+    <Content Include="assets\images\blog\01.jpg" />
+    <Content Include="assets\images\blog\02.jpg" />
+    <Content Include="assets\images\blog\03.jpg" />
+    <Content Include="assets\images\blog\04.jpg" />
+    <Content Include="assets\images\blog\05.jpg" />
+    <Content Include="assets\images\blog\06.jpg" />
+    <Content Include="assets\images\blog\07.jpg" />
+    <Content Include="assets\images\blog\08.jpg" />
+    <Content Include="assets\images\blog\list-1.jpg" />
+    <Content Include="assets\images\blog\list-2.jpg" />
+    <Content Include="assets\images\blog\list-3.jpg" />
+    <Content Include="assets\images\logo\01.png" />
+    <Content Include="assets\images\logo\app.png" />
+    <Content Include="assets\images\logo\google.png" />
+    <Content Include="assets\images\pay-card\01.jpg" />
+    <Content Include="assets\images\pay-card\02.jpg" />
+    <Content Include="assets\images\pay-card\03.jpg" />
+    <Content Include="assets\images\pay-card\04.jpg" />
+    <Content Include="assets\images\product\01.png" />
+    <Content Include="assets\images\product\02.png" />
+    <Content Include="assets\images\product\03.png" />
+    <Content Include="assets\images\product\04.png" />
+    <Content Include="assets\images\product\05.png" />
+    <Content Include="assets\images\product\06.png" />
+    <Content Include="assets\images\product\07.png" />
+    <Content Include="assets\images\product\08.png" />
+    <Content Include="assets\images\product\09.png" />
+    <Content Include="assets\images\product\10.png" />
+    <Content Include="assets\images\product\11.png" />
+    <Content Include="assets\images\product\12.png" />
+    <Content Include="assets\images\product\13.png" />
+    <Content Include="assets\images\product\14.png" />
+    <Content Include="assets\images\product\15.png" />
+    <Content Include="assets\images\review\01.jpg" />
+    <Content Include="assets\images\review\02.jpg" />
+    <Content Include="assets\images\review\03.jpg" />
+    <Content Include="assets\source\css\custom\account.css" />
+    <Content Include="assets\source\css\custom\blog-details.css" />
+    <Content Include="assets\source\css\custom\blog-list.css" />
+    <Content Include="assets\source\css\custom\cartlist.css" />
+    <Content Include="assets\source\css\custom\checkout.css" />
+    <Content Include="assets\source\css\custom\contact.css" />
+    <Content Include="assets\source\css\custom\home-1.css" />
+    <Content Include="assets\source\css\custom\main.css" />
+    <Content Include="assets\source\css\custom\product-details.css" />
+    <Content Include="assets\source\css\custom\shop-fullwidth.css" />
+    <Content Include="assets\source\css\custom\shop-leftbar.css" />
+    <Content Include="assets\source\css\custom\shop-rightbar.css" />
+    <Content Include="assets\source\css\custom\signin-up.css" />
+    <Content Include="assets\source\css\custom\wishlist.css" />
+    <Content Include="assets\source\css\vendor\bootstrap.min.css" />
+    <Content Include="assets\source\css\vendor\flaticon.css" />
+    <Content Include="assets\source\css\vendor\fontawesome.css" />
+    <Content Include="assets\source\css\vendor\jquery-ui.css" />
+    <Content Include="assets\source\css\vendor\slick.css" />
+    <Content Include="assets\source\js\custom\main.js" />
+    <Content Include="assets\source\js\custom\price-range.js" />
+    <Content Include="assets\source\js\custom\slick.js" />
+    <Content Include="assets\source\js\vendor\bootstrap.min.js" />
+    <Content Include="assets\source\js\vendor\jquery-1.12.4.min.js" />
+    <Content Include="assets\source\js\vendor\jquery-ui.js" />
+    <Content Include="assets\source\js\vendor\popper.min.js" />
+    <Content Include="assets\source\js\vendor\slick.min.js" />
+    <Content Include="Content\css\AdminLTE.min.css" />
+    <Content Include="Content\css\bootstrap-datepicker.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\bootstrap3-wysihtml5.min.css" />
+    <Content Include="Content\css\daterangepicker.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\ionicons.min.css" />
+    <Content Include="Content\css\jquery-jvectormap.css" />
+    <Content Include="Content\css\morris.css" />
+    <Content Include="Content\css\_all-skins.min.css" />
+    <Content Include="Content\fonts\ionicons.svg" />
+    <Content Include="Content\img\user1-128x128.jpg" />
+    <Content Include="Content\img\user2-160x160.jpg" />
+    <Content Include="Content\img\user3-128x128.jpg" />
+    <Content Include="Content\img\user4-128x128.jpg" />
+    <Content Include="Content\js\adminlte.min.js" />
+    <Content Include="Content\js\bootstrap-datepicker.min.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\bootstrap3-wysihtml5.all.min.js" />
+    <Content Include="Content\js\changyong.js" />
+    <Content Include="Content\js\dashboard.js" />
+    <Content Include="Content\js\daterangepicker.js" />
+    <Content Include="Content\js\demo.js" />
+    <Content Include="Content\js\fastclick.js" />
+    <Content Include="Content\js\jquery-jvectormap-1.2.2.min.js" />
+    <Content Include="Content\js\jquery-jvectormap-world-mill-en.js" />
+    <Content Include="Content\js\jquery-ui.min.js" />
+    <Content Include="Content\js\jquery.knob.min.js" />
+    <Content Include="Content\js\jquery.min.js" />
+    <Content Include="Content\js\jquery.slimscroll.min.js" />
+    <Content Include="Content\js\jquery.sparkline.min.js" />
+    <Content Include="Content\js\moment.min.js" />
+    <Content Include="Content\js\morris.min.js" />
+    <Content Include="Content\js\raphael.min.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\DianShEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -108,9 +213,18 @@
       <LastGenOutput>DianShEntity.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
+    <Content Include="页面\account.html" />
+    <Content Include="页面\cartlist.html" />
+    <Content Include="页面\contact.html" />
+    <Content Include="页面\product-details.html" />
+    <Content Include="页面\shop-fullwidth.html" />
+    <Content Include="页面\主页.html" />
+    <Content Include="页面\登入页面.html" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,17 +281,28 @@
     <Content Include="Models\DianShEntity.edmx.diagram">
       <DependentUpon>DianShEntity.edmx</DependentUpon>
     </Content>
+    <Content Include="assets\fonts\flaticon\Flaticon.woff2" />
+    <Content Include="assets\fonts\font-awesome\fa-brands-400.woff2" />
+    <Content Include="assets\fonts\font-awesome\fa-regular-400.woff2" />
+    <Content Include="assets\fonts\font-awesome\fa-solid-900.woff2" />
+    <Content Include="Content\fonts\ionicons.eot" />
+    <Content Include="Content\fonts\ionicons.ttf" />
+    <Content Include="Content\fonts\ionicons.woff" />
     <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="页面\debug.log" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
