@@ -1,0 +1,309 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户管理界面</title>
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/js/bootstrap.css" rel="stylesheet" />
+    <link href="~/js/bootstrap-table.css" rel="stylesheet" />
+    <link href="~/js/matrix-style.css" rel="stylesheet" />
+    <link href="~/js/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">修改用户信息</h4>
+                </div>
+                <form id="formUser" class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="txtbUserName" class="col-sm-2 control-label">真实名字</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtbUserName" class="form-control" id="txtbUserName" readonly="readonly">
+                                <input type="hidden" id="UserID" name="UserID" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtName" class="col-sm-2 control-label">昵称</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtName" class="form-control" id="txtName" placeholder="请输入昵称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPwd" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtPwd" class="form-control" id="txtPwd" placeholder="请输入密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtCity" class="col-sm-2 control-label">城市</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtCity" class="form-control" id="txtCity" placeholder="请输入所在城市">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAddress" class="col-sm-2 control-label">详细地址</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtAddress" class="form-control" id="txtAddress" placeholder="请输入所在地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPostcode" class="col-sm-2 control-label">邮政编码</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="txtPostcode" class="form-control" id="txtPostcode" placeholder="请输入邮政编码">
+                        </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtEmail" class="col-sm-2 control-label">电子邮箱</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtEmail" class="form-control" id="txtEmail" placeholder="请输入邮箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtTel" class="col-sm-2 control-label">电话号码</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtTel" class="form-control" id="txtTel" placeholder="请输入电话号码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="txtAnswer" class="col-sm-2 control-label">注册答案</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="txtAnswer" class="form-control" id="txtAnswer" placeholder="请输入答案">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" id="btnUserEdit">提交修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="form-inline">
+                <div class="form-group">
+                    <label for="">姓名</label>
+                    <input type="text" class="form-control" id="txtUserName" placeholder="请输入姓名或昵称">
+                </div>
+                <button type="button" class="btn btn-default" id="btnGetUser">查询</button>
+            </div>
+            <div class="widget-box">
+                <div class="widget-title" style="padding: 5px;">
+                    <span class="icon"> <i class="icon-th"></i> </span>
+                    <h5>员工管理</h5>
+                    <div class="form-group" style="margin-top:5px;">
+                        <button type="button" id="btnUserEditModel" class="btn btn-xs btn-primary" title="修改"><span aria-hidden="true">修改</span></button>
+                        <button type="button" id="btnUserDelete" class="btn btn-xs btn btn-danger" title="删除"><span aria-hidden="true">删除</span></button>
+                    </div>
+                </div>
+                <div class="widget-content nopadding">
+                    <table id="dg" class="table table-bordered table-striped">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+@*bootstrap-table需要引入js文件*@
+<script src="~/Scripts/bootstrap-table.js"></script>
+@*bootstrap-table的汉化包*@
+<script src="~/Scripts/bootstrap-table-zh-CN.min.js"></script>
+<script src="~/Scripts/bootstrap-datetimepicker.js"></script>
+<script src="~/Scripts/bootstrap-table-zh-CN.min.js"></script>
+<script src="~/Scripts/dialog.js"></script>
+<script>
+    $(function () {
+        //用户信息绑定
+        UserTable();
+        //查询用户
+        SelUserNew();
+        //修改用户信息
+        EditUser();
+        //保存修改用户信息
+        EditUserAdd();
+        
+    })
+    //修改模态框显示方法
+    function EditUser() {
+        //修改按钮的单击事件
+        $("#btnUserEditModel").click(function () {
+            //选中的数据
+            var s = $("#dg").bootstrapTable('getAllSelections');
+            console.log(s)
+            if (s.length!=1) {
+                alert("修改不能选中多行数据，或者不选择数据")
+                return;
+            }
+            //模态框显示
+            $("#myModal").modal({
+                show: true,
+                backdrop: false,
+                keyboard: true
+            });
+            $("#txtbUserName").val(s[0].truename);
+            $("#txtName").val(s[0].name);
+            $("#txtPwd").val(s[0].password);
+            $("#txtCity").val(s[0].city);
+            $("#txtAddress").val(s[0].address);
+            $("#txtPostcode").val(s[0].postcode);
+            $("#txtEmail").val(s[0].Email);
+            $("#txtTel").val(s[0].tel);
+            $("#txtAnswer").val(s[0].answer);
+        })
+    }
+    //修改功能实现
+    function EditUserAdd() {
+        $("#btnUserEdit").click(function () {
+            var name=$("#txtName").val().trim();
+            var pwd = $("#txtPwd").val().trim();
+            var city = $("#txtCity").val().trim();
+            var address = $("#txtAddress").val().trim();
+            var postcode = $("#txtPostcode").val().trim();
+            var email = $("#txtEmail").val().trim();
+            var tel = $("#txtTel").val().trim();
+            var answer = $("#txtAnswer").val().trim();
+            //非空验证
+            if ((name == "") || (pwd == "") || (city == "") || (address == "") || (postcode == "") || (email == "") || (tel == "") || (answer=="")) {
+                alert("输入的内容不允许为空");
+                return
+            }
+            //密码数字验证
+            if (isNaN(pwd) && pwd.length>9) {
+                alert("密码只能为数字,且长度不能超过9位数");
+                return;
+            }
+            //
+            if (!isNaN(city)) {
+                alert("不能输入数字,")
+            }
+        })
+    }
+    //查询数据
+    function SelUserNew() {
+        $("#btnGetUser").click(function () {
+            //数据刷新
+            $("#dg").bootstrapTable("refresh");
+        })
+    }
+    //自定义数据加载方法
+    function UserTable() {
+        $("#dg").bootstrapTable({
+            url: '/User/SelectUsers',//请求后台路径
+            method: 'post',//请求方式
+            pagination: true,//是否显示分页
+            pageNumber: 1,//初始化加载第一页，默认第一页
+            pageSize: 5,//每页的行数
+            pageList: [5, 10, 15, 20, 25],//可供选择每页行数
+            queryParams: function () {
+                return {
+                    UserName: $("#txtUserName").val()
+                }
+            },
+            //sortable: false,//是否启用排序
+            columns: [{
+                checkbox: true,
+            },
+            {
+                    field: 'ID',//绑定到数据库的字段
+                    title: '用户ID',//表头内容
+                    align: 'center',//表格内容左右居中
+                    valigin: 'middle',//上下居中
+                }, 
+            {
+                field: 'truename',//绑定到数据库的字段
+                title: '姓名',//表头内容
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+            }, {
+                field: 'name',//绑定到数据库的字段
+                title: '昵称',//表头内容
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+            }, {
+                field: 'password',//绑定到数据库的字段
+                title: '密码',//表头内容
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+            }, {
+                field: 'city',
+                title: '所在城市',
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+                //formatter: function (value, row, index) {
+                //    if (value == '1') {
+                //        return "<span style='color: blue'>男</span>"
+                //    } else {
+                //        return "<span style='color: red'>女</span>"
+                //    }
+                //}
+            }, {
+                field: 'cardno',
+                title: '身份证号码',
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+            }, {
+                field: 'address',
+                title: '详细地址',
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+            }, {
+                field: 'postcode',
+                title: '邮政编码',
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+                //formatter: function (value) {
+                //    if (!value) {
+                //        return "";
+                //    }
+                //    var tick = value.substring(6, value.length - 2);
+                //    var date = new Date(parseInt(tick));
+                //    var month = date.getMonth() + 1;
+                //    var day = date.getDate();
+                //    return date.getFullYear() + "-" + (month < 10 ? "0" + month : month) + "-" + (day < 10 ? "0" + day : day);
+                //}
+            }, {
+                field: 'Email',
+                title: '邮箱',
+                align: 'center',//表格内容左右居中
+                valigin: 'middle',//上下居中
+                }
+                ,
+                {
+                    field: 'tel',
+                    title: '电话号码',
+                    align: 'center',//表格内容左右居中
+                    valigin: 'middle',//上下居中
+                },
+                {
+                    field: 'question',
+                    title: '注册问题',
+                    align: 'center',//表格内容左右居中
+                    valigin: 'middle',//上下居中
+                },
+                {
+                    field: 'answer',
+                    title: '回答问题',
+                    align: 'center',//表格内容左右居中
+                    valigin: 'middle',//上下居中
+                }]
+        })
+    }
+</script>
